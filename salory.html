@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب الراتب التقديري - تصميم 313 المتميز</title>
+    <style>
+        :root {
+            --primary-1: #6C5CE7;
+            --primary-2: #A569BD;
+            --secondary-1: #00B894;
+            --secondary-2: #2ecc71;
+            --accent-1: #FD79A8;
+            --accent-2: #E84393;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            
+            --gradient-bg: linear-gradient(135deg, var(--primary-1), var(--primary-2), var(--secondary-1), var(--accent-1), var(--primary-1));
+            --gradient-header: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            --gradient-footer: linear-gradient(135deg, var(--dark), #34495e);
+            
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-inset: inset 0 2px 5px rgba(0,0,0,0.1);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--gradient-bg);
+            background-size: 400% 400%;
+            animation: gradient-wave 15s ease infinite;
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradient-wave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: var(--accent-1);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-1);
+            border-radius: 2px;
+        }
+        
+        /* تصميم كروت 313 */
+        .card-313 {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: 25px;
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-313:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-313::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-1), var(--secondary-1));
+        }
+        
+        .card-313-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-313-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* شبكة 313 */
+        .grid-313 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-1);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(253, 121, 168, 0.2);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            display: block;
+            margin: 40px auto;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, var(--primary-2), var(--primary-1));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        /* قسم النتائج */
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .salary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(255,255,255,0.2);
+        }
+        
+        .salary-item.total {
+            font-weight: bold;
+            border-bottom: 2px solid var(--accent-1);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .net-salary {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-2);
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            animation: pulse 2s infinite;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .error {
+            color: var(--accent-2);
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            padding: 15px;
+            background: rgba(232, 67, 147, 0.1);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(232, 67, 147, 0.3);
+        }
+        
+        /* جدول العلاوات */
+        .bonus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .bonus-table th, .bonus-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .bonus-table th {
+            background: rgba(255,255,255,0.2);
+            font-weight: 600;
+        }
+        
+        .bonus-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .bonus-table tr:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        /* تأثيرات إضافية */
+        .highlight {
+            color: var(--accent-1);
+            font-weight: bold;
+        }
+        
+        /* تصميم للهواتف */
+        @media (max-width: 768px) {
+            .grid-313, .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-313 {
+                padding: 20px;
+            }
+            
+            .net-salary {
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-calculator"></i> حساب الراتب التقديري</h1>
+        
+        <!-- قسم الإدخال بتصميم 313 -->
+        <div class="grid-313">
+            <div class="card-313">
+                <div class="card-313-header">
+                    <div class="card-313-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h2>البيانات الأساسية</h2>
+                </div>
+                <div class="form-group">
+                    <label for="rank"><i class="fas fa-star"></i> الرتبة الحالية</label>
+                    <select id="rank" class="form-control">
+                        <option value="فريق">فريق</option>
+                        <option value="لواء">لواء</option>
+                        <option value="لواء بالراتب">لواء بالراتب</option>
+                        <option value="عميد">عميد</option>
+                        <option value="عميد بالراتب">عميد بالراتب</option>
+                        <option value="عقيد">عقيد</option>
+                        <option value="مقدم">مقدم</option>
+                        <option value="رائد">رائد</option>
+                        <option value="نقيب">نقيب</option>
+                        <option value="ملازم أول">ملازم أول</option>
+                        <option value="ملازم">ملازم</option>
+                        <option value="مفوض 1">مفوض 1</option>
+                        <option value="مفوض 2">مفوض 2</option>
+                        <option value="مفوض 3">مفوض 3</option>
+                        <option value="مفوض 4">مفوض 4</option>
+                        <option value="مفوض 5">مفوض 5</option>
+                        <option value="مفوض 6">مفوض 6</option>
+                        <option value="مفوض 7">مفوض 7</option>
+                        <option value="مفوض 8">مفوض 8</option>
+                        <option value="رئيس عرفاء">رئيس عرفاء</option>
+                        <option value="عريف">عريف</option>
+                        <option value="نائب عريف">نائب عريف</option>
+                        <option value="شرطي أول">شرطي أول</option>
+                        <option value="شرطي">شرطي</option>
+                        <option value="متدرب">متدرب</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="education"><i class="fas fa-graduation-cap"></i> التحصيل الدراسي</label>
+                    <select id="education" class="form-control">
+                        <option value="دكتوراه">دكتوراه</option>
+                        <option value="ماجستير">ماجستير</option>
+                        <option value="دبلوم عالي">دبلوم عالي</option>
+                        <option value="دبلوم فني">دبلوم فني</option>
+                        <option value="إعدادية">إعدادية</option>
+                        <option value="متوسطة فما دون">متوسطة فما دون</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card-313">
+                <div class="card-313-header">
+                    <div class="card-313-icon" style="background-color: var(--accent-1);">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h2>البيانات العائلية</h2>
+                </div>
+                <div class="form-group">
+                    <label for="wives"><i class="fas fa-female"></i> عدد الزوجات</label>
+                    <select id="wives" class="form-control">
+                        <option value="لا يوجد">لا يوجد</option>
+                        <option value="واحدة">واحدة</option>
+                        <option value="اثنتان">اثنتان</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="children"><i class="fas fa-child"></i> عدد الأطفال</label>
+                    <select id="children" class="form-control">
+                        <option value="لا يوجد">لا يوجد</option>
+                        <option value="واحد">واحد</option>
+                        <option value="اثنان">اثنان</option>
+                        <option value="ثلاثة">ثلاثة</option>
+                        <option value="أربعة">أربعة</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card-313">
+                <div class="card-313-header">
+                    <div class="card-313-icon" style="background-color: var(--secondary-1);">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h2>البيانات الوظيفية</h2>
+                </div>
+                <div class="form-group">
+                    <label for="bonuses"><i class="fas fa-medal"></i> عدد العلاوات في الرتبة الحالية</label>
+                    <input type="number" id="bonuses" min="0" max="4" value="0" class="form-control">
+                </div>
+                
+                <!-- جدول العلاوات -->
+                <table class="bonus-table">
+                    <thead>
+                        <tr>
+                            <th>العلاوة</th>
+                            <th>القيمة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>واحدة</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td>اثنتان</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>ثلاثة</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td>أربعة</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>خمسة</td>
+                            <td>25%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <button class="btn" onclick="calculateSalary()">
+            <i class="fas fa-calculator"></i> حساب الراتب
+        </button>
+        
+        <div id="error-message" class="error"></div>
+        
+        <!-- قسم النتائج بتصميم 313 -->
+        <div id="result-section" style="display: none;">
+            <div class="result-grid">
+                <div class="card-313">
+                    <div class="card-313-header">
+                        <div class="card-313-icon" style="background-color: var(--dark);">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h2>المكونات الأساسية</h2>
+                    </div>
+                    <div id="basic-items"></div>
+                </div>
+                
+                <div class="card-313">
+                    <div class="card-313-header">
+                        <div class="card-313-icon" style="background-color: var(--warning-color);">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h2>البدلات والعلاوات</h2>
+                    </div>
+                    <div id="allowance-items"></div>
+                </div>
+                
+                <div class="card-313">
+                    <div class="card-313-header">
+                        <div class="card-313-icon" style="background-color: var(--primary-2);">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h2>الاستقطاعات</h2>
+                    </div>
+                    <div id="deduction-items"></div>
+                </div>
+                
+                <div id="net-salary" class="net-salary">
+                    <i class="fas fa-wallet"></i> الراتب الصافي: <span id="net-salary-amount"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الرواتب الاسمية
+        const salaryData = {
+            "فريق": { الأساسي: 2413000, الخطورة: 620000, الإستثنائية: 4000000, الرزق: 330000 },
+            "لواء": { الأساسي: 1500000, الخطورة: 605000, الإستثنائية: 2000000, الرزق: 330000 },
+            "لواء بالراتب": { الأساسي: 1500000, الخطورة: 605000, الإستثنائية: 0, الرزق: 330000 },
+            "عميد": { الأساسي: 1048000, الخطورة: 590000, الإستثنائية: 0, الرزق: 330000 },
+            "عميد بالراتب": { الأساسي: 1048000, الخطورة: 590000, الإستثنائية: 0, الرزق: 330000 },
+            "عقيد": { الأساسي: 758000, الخطورة: 575000, الإستثنائية: 0, الرزق: 330000 },
+            "مقدم": { الأساسي: 621000, الخطورة: 560000, الإستثنائية: 0, الرزق: 330000 },
+            "رائد": { الأساسي: 509000, الخطورة: 545000, الإستثنائية: 0, الرزق: 330000 },
+            "نقيب": { الأساسي: 429000, الخطورة: 530000, الإستثنائية: 0, الرزق: 330000 },
+            "ملازم أول": { الأساسي: 362000, الخطورة: 515000, الإستثنائية: 0, الرزق: 330000 },
+            "ملازم": { الأساسي: 296000, الخطورة: 500000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 1": { الأساسي: 509000, الخطورة: 485000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 2": { الأساسي: 450000, الخطورة: 485000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 3": { الأساسي: 429000, الخطورة: 485000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 4": { الأساسي: 398000, الخطورة: 470000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 5": { الأساسي: 380000, الخطورة: 470000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 6": { الأساسي: 362000, الخطورة: 455000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 7": { الأساسي: 332000, الخطورة: 455000, الإستثنائية: 0, الرزق: 330000 },
+            "مفوض 8": { الأساسي: 314000, الخطورة: 440000, الإستثنائية: 0, الرزق: 330000 },
+            "رئيس عرفاء": { الأساسي: 250000, الخطورة: 425000, الإستثنائية: 0, الرزق: 330000 },
+            "عريف": { الأساسي: 235000, الخطورة: 410000, الإستثنائية: 0, الرزق: 330000 },
+            "نائب عريف": { الأساسي: 205000, الخطورة: 395000, الإستثنائية: 0, الرزق: 330000 },
+            "شرطي أول": { الأساسي: 180000, الخطورة: 380000, الإستثنائية: 0, الرزق: 330000 },
+            "شرطي": { الأساسي: 164000, الخطورة: 350000, الإستثنائية: 0, الرزق: 330000 },
+            "متدرب": { الأساسي: 164000, الخطورة: 350000, الإستثنائية: 0, الرزق: 330000 }
+        };
+
+        // بيانات التحصيل الدراسي
+        const educationData = {
+            "فريق": { "دكتوراه": 1500000, "ماجستير": 1125000, "دبلوم عالي": 825000, "دبلوم فني": 525000, "إعدادية": 375000, "متوسطة فما دون": 225000 },
+            "لواء": { "دكتوراه": 1048000, "ماجستير": 786000, "دبلوم عالي": 576400, "دبلوم فني": 366800, "إعدادية": 262000, "متوسطة فما دون": 157200 },
+            "عميد": { "دكتوراه": 1048000, "ماجستير": 786000, "دبلوم عالي": 576400, "دبلوم فني": 366800, "إعدادية": 262000, "متوسطة فما دون": 157200 },
+            "عقيد": { "دكتوراه": 621000, "ماجستير": 465750, "دبلوم عالي": 341550, "دبلوم فني": 217350, "إعدادية": 155250, "متوسطة فما دون": 93150 },
+            "مقدم": { "دكتوراه": 429000, "ماجستير": 321750, "دبلوم عالي": 235950, "دبلوم فني": 150150, "إعدادية": 107250, "متوسطة فما دون": 64350 },
+            "رائد": { "دكتوراه": 362000, "ماجستير": 271500, "دبلوم عالي": 199100, "دبلوم فني": 126700, "إعدادية": 90500, "متوسطة فما دون": 54300 },
+            "ملازم أول": { "دكتوراه": 296000, "ماجستير": 222000, "دبلوم عالي": 162800, "دبلوم فني": 103600, "إعدادية": 74000, "متوسطة فما دون": 44400 },
+            "ملازم": { "دكتوراه": 509000, "ماجستير": 381750, "دبلوم عالي": 279950, "دبلوم فني": 178150, "إعدادية": 127250, "متوسطة فما دون": 76350 },
+            "مفوض 1": { "دكتوراه": 450000, "ماجستير": 327150, "دبلوم عالي": 247500, "دبلوم فني": 157500, "إعدادية": 112500, "متوسطة فما دون": 67500 },
+            "مفوض 2": { "دكتوراه": 398000, "ماجستير": 298500, "دبلوم عالي": 218900, "دبلوم فني": 139300, "إعدادية": 99500, "متوسطة فما دون": 59700 },
+            "مفوض 3": { "دكتوراه": 380000, "ماجستير": 285000, "دبلوم عالي": 209000, "دبلوم فني": 133300, "إعدادية": 95000, "متوسطة فما دون": 57000 },
+            "مفوض 4": { "دكتوراه": 332000, "ماجستير": 249000, "دبلوم عالي": 182600, "دبلوم فني": 116200, "إعدادية": 90500, "متوسطة فما دون": 54300 },
+            "مفوض 5": { "دكتوراه": 314000, "ماجستير": 235500, "دبلوم عالي": 172700, "دبلوم فني": 109900, "إعدادية": 78500, "متوسطة فما دون": 47100 },
+            "مفوض 6": { "دكتوراه": 205000, "ماجستير": 153750, "دبلوم عالي": 112750, "دبلوم فني": 71750, "إعدادية": 51250, "متوسطة فما دون": 37500 },
+            "مفوض 7": { "دكتوراه": 164000, "ماجستير": 123000, "دبلوم عالي": 90200, "دبلوم فني": 57400, "إعدادية": 45000, "متوسطة فما دون": 35250 },
+            "مفوض 8": { "دكتوراه": 164000, "ماجستير": 123000, "دبلوم عالي": 90200, "دبلوم فني": 57400, "إعدادية": 41000, "متوسطة فما دون": 30750 },
+            "رئيس عرفاء": { "دكتوراه": 0, "ماجستير": 0, "دبلوم عالي": 0, "دبلوم فني": 0, "إعدادية": 0, "متوسطة فما دون": 24600 },
+            "عريف": { "دكتوراه": 0, "ماجستير": 0, "دبلوم عالي": 0, "دبلوم فني": 0, "إعدادية": 0, "متوسطة فما دون": 24600 },
+            "نائب عريف": { "دكتوراه": 0, "ماجستير": 0, "دبلوم عالي": 0, "دبلوم فني": 0, "إعدادية": 0, "متوسطة فما دون": 0 },
+            "شرطي أول": { "دكتوراه": 0, "ماجستير": 0, "دبلوم عالي": 0, "دبلوم فني": 0, "إعدادية": 0, "متوسطة فما دون": 0 },
+            "شرطي": { "دكتوراه": 0, "ماجستير": 0, "دبلوم عالي": 0, "دبلوم فني": 0, "إعدادية": 0, "متوسطة فما دون": 0 },
+            "متدرب": { "دكتوراه": 0, "ماجستير": 0, "دبلوم عالي": 0, "دبلوم فني": 0, "إعدادية": 0, "متوسطة فما دون": 0 }
+        };
+
+        function calculateSalary() {
+            // الحصول على القيم من النموذج
+            const rank = document.getElementById('rank').value;
+            const education = document.getElementById('education').value;
+            const wives = document.getElementById('wives').value;
+            const children = document.getElementById('children').value;
+            const bonuses = parseInt(document.getElementById('bonuses').value);
+            
+            // التأكد من صحة البيانات
+            if (!rank || !education) {
+                document.getElementById('error-message').textContent = 'الرجاء إدخال جميع البيانات المطلوبة';
+                return;
+            }
+            
+            // حساب الراتب الأساسي
+            const basicSalary = salaryData[rank].الأساسي;
+            const dangerAllowance = salaryData[rank].الخطورة;
+            const exceptionalAllowance = salaryData[rank].الإستثنائية;
+            const livingAllowance = salaryData[rank].الرزق;
+            
+            // حساب بدل التحصيل الدراسي
+            const educationBonus = educationData[rank][education] || 0;
+            
+            // حساب بدل الزوجة
+            let wifeBonus = 0;
+            if (wives === 'واحدة') wifeBonus = 50000;
+            else if (wives === 'اثنتان') wifeBonus = 100000;
+            
+            // حساب بدل الأولاد
+            let childrenBonus = 0;
+            if (children === 'واحد') childrenBonus = 25000;
+            else if (children === 'اثنان') childrenBonus = 50000;
+            else if (children === 'ثلاثة') childrenBonus = 75000;
+            else if (children === 'أربعة') childrenBonus = 100000;
+            
+            // حساب العلاوة
+            const bonusPercentage = bonuses * 0.05; // 5% لكل علاوة
+            const rankBonus = basicSalary * bonusPercentage;
+            
+            // حساب الراتب الإجمالي قبل الاستقطاعات
+            const grossSalary = basicSalary + dangerAllowance + exceptionalAllowance + livingAllowance + 
+                               educationBonus + wifeBonus + childrenBonus + rankBonus;
+            
+            // حساب الاستقطاعات (ضريبة، تقاعد، إلخ)
+            const tax = grossSalary * 0.05; // 5% ضريبة
+            const retirement = grossSalary * 0.07; // 7% تقاعد
+            const deductions = tax + retirement;
+            
+            // حساب الراتب الصافي
+            const netSalary = grossSalary - deductions;
+            
+            // عرض النتائج
+            displayResults(basicSalary, dangerAllowance, exceptionalAllowance, livingAllowance,
+                         educationBonus, wifeBonus, childrenBonus, rankBonus,
+                         tax, retirement, netSalary);
+        }
+        
+        function displayResults(basic, danger, exceptional, living,
+                               educationBonus, wifeBonus, childrenBonus, rankBonus,
+                               tax, retirement, netSalary) {
+            // عرض المكونات الأساسية
+            let basicHTML = `
+                <div class="salary-item">
+                    <span>الراتب الأساسي:</span>
+                    <span>${formatNumber(basic)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>بدل الخطورة:</span>
+                    <span>${formatNumber(danger)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>بدل الإستثنائية:</span>
+                    <span>${formatNumber(exceptional)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>بدل الرزق:</span>
+                    <span>${formatNumber(living)} دينار</span>
+                </div>
+                <div class="salary-item total">
+                    <span>المجموع:</span>
+                    <span>${formatNumber(basic + danger + exceptional + living)} دينار</span>
+                </div>
+            `;
+            document.getElementById('basic-items').innerHTML = basicHTML;
+            
+            // عرض البدلات والعلاوات
+            let allowanceHTML = `
+                <div class="salary-item">
+                    <span>بدل التحصيل الدراسي:</span>
+                    <span>${formatNumber(educationBonus)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>بدل الزوجة:</span>
+                    <span>${formatNumber(wifeBonus)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>بدل الأولاد:</span>
+                    <span>${formatNumber(childrenBonus)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>علاوة الرتبة:</span>
+                    <span>${formatNumber(rankBonus)} دينار</span>
+                </div>
+                <div class="salary-item total">
+                    <span>المجموع:</span>
+                    <span>${formatNumber(educationBonus + wifeBonus + childrenBonus + rankBonus)} دينار</span>
+                </div>
+            `;
+            document.getElementById('allowance-items').innerHTML = allowanceHTML;
+            
+            // عرض الاستقطاعات
+            let deductionHTML = `
+                <div class="salary-item">
+                    <span>الضريبة:</span>
+                    <span>${formatNumber(tax)} دينار</span>
+                </div>
+                <div class="salary-item">
+                    <span>التقاعد:</span>
+                    <span>${formatNumber(retirement)} دينار</span>
+                </div>
+                <div class="salary-item total">
+                    <span>المجموع:</span>
+                    <span>${formatNumber(tax + retirement)} دينار</span>
+                </div>
+            `;
+            document.getElementById('deduction-items').innerHTML = deductionHTML;
+            
+            // عرض الراتب الصافي
+            document.getElementById('net-salary-amount').textContent = formatNumber(netSalary) + ' دينار';
+            
+            // إظهار قسم النتائج
+            document.getElementById('result-section').style.display = 'block';
+            document.getElementById('error-message').textContent = '';
+            
+            // التمرير إلى النتائج
+            document.getElementById('result-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function formatNumber(num) {
+            return new Intl.NumberFormat('ar-IQ').format(num);
+        }
+    </script>
+</body>
+</html>

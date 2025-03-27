@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام حساب الترقيات</title>
+    <style>
+        :root {
+            --primary-1: #6C5CE7;
+            --primary-2: #A569BD;
+            --secondary-1: #00B894;
+            --secondary-2: #2ecc71;
+            --accent-1: #FD79A8;
+            --accent-2: #E84393;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            
+            --gradient-bg: linear-gradient(135deg, var(--primary-1), var(--primary-2), var(--secondary-1), var(--accent-1), var(--primary-1));
+            --gradient-header: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--gradient-bg);
+            background-size: 400% 400%;
+            animation: gradient-wave 15s ease infinite;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradient-wave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* تصميم كروت 313 */
+        .card-313 {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-313:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-313::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-1), var(--secondary-1));
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .card-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: white;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .card-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-1);
+            border-radius: 4px;
+        }
+
+        /* عناصر النموذج */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: var(--radius-md);
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 3px rgba(253, 121, 168, 0.2);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+        
+        /* زر الحساب */
+        .btn-313 {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-313:hover {
+            background: linear-gradient(135deg, var(--primary-2), var(--primary-1));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-313:active {
+            transform: translateY(0);
+        }
+
+        /* نتائج الحساب */
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .result-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-1);
+            transition: var(--transition);
+        }
+        
+        .result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .result-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--accent-1);
+        }
+        
+        .result-value {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* تصميم للهواتف */
+        @media (max-width: 768px) {
+            .card-313 {
+                padding: 20px;
+            }
+            
+            .card-header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card-313">
+            <div class="card-header">
+                <h1><i class="fas fa-chart-line"></i> نظام حساب الترقيات</h1>
+            </div>
+            
+            <div class="form-group">
+                <label for="appointmentDate"><i class="fas fa-calendar-day"></i> تاريخ التعيين</label>
+                <input type="date" id="appointmentDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="currentRank"><i class="fas fa-star"></i> الرتبة الحالية</label>
+                <select id="currentRank" class="form-control">
+                    <option value="شرطي">شرطي</option>
+                    <option value="شرطي أول">شرطي أول</option>
+                    <option value="نائب عريف">نائب عريف</option>
+                    <option value="عريف">عريف</option>
+                    <option value="رئيس عرفاء">رئيس عرفاء</option>
+                    <option value="مفوض 8">مفوض 8</option>
+                    <option value="مفوض 7">مفوض 7</option>
+                    <option value="مفوض 6">مفوض 6</option>
+                    <option value="مفوض 5">مفوض 5</option>
+                    <option value="مفوض 4">مفوض 4</option>
+                    <option value="مفوض 3">مفوض 3</option>
+                    <option value="مفوض 2">مفوض 2</option>
+                    <option value="مفوض 1">مفوض 1</option>
+                    <option value="ملازم">ملازم</option>
+                    <option value="ملازم أول">ملازم أول</option>
+                    <option value="نقيب">نقيب</option>
+                    <option value="رائد">رائد</option>
+                    <option value="مقدم">مقدم</option>
+                    <option value="عقيد">عقيد</option>
+                    <option value="عميد">عميد</option>
+                    <option value="لواء">لواء</option>
+                    <option value="فريق">فريق</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="lastPromotion"><i class="fas fa-calendar-check"></i> تاريخ آخر ترقية</label>
+                <input type="date" id="lastPromotion" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="seniority"><i class="fas fa-running"></i> القدم الحالي (بالأشهر)</label>
+                <input type="number" id="seniority" class="form-control" min="0" value="0">
+            </div>
+
+            <div class="form-group">
+                <label for="newSeniority"><i class="fas fa-trophy"></i> القدم الجديد (بالأشهر)</label>
+                <input type="number" id="newSeniority" class="form-control" min="0" value="0">
+            </div>
+
+            <button class="btn-313" onclick="calculatePromotion()">
+                <i class="fas fa-calculator"></i> حساب الترقية القادمة
+            </button>
+
+            <div class="results" id="results">
+                <div class="result-item">
+                    <div class="result-title">الرتبة الحالية</div>
+                    <div class="result-value" id="currentRankResult">-</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">الرتبة التالية</div>
+                    <div class="result-value" id="nextRankResult">-</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">تاريخ استحقاق الترقية</div>
+                    <div class="result-value" id="promotionDateResult">-</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">جدول الترقية القادم</div>
+                    <div class="result-value" id="promotionScheduleResult">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // بيانات مدة الترقية لكل رتبة (بالأشهر)
+        const promotionData = {
+            "شرطي": { nextRank: "شرطي أول", duration: 12 },
+            "شرطي أول": { nextRank: "نائب عريف", duration: 24 },
+            "نائب عريف": { nextRank: "عريف", duration: 24 },
+            "عريف": { nextRank: "رئيس عرفاء", duration: 36 },
+            "رئيس عرفاء": { nextRank: "مفوض 8", duration: 48 },
+            "مفوض 8": { nextRank: "مفوض 7", duration: 36 },
+            "مفوض 7": { nextRank: "مفوض 6", duration: 36 },
+            "مفوض 6": { nextRank: "مفوض 5", duration: 36 },
+            "مفوض 5": { nextRank: "مفوض 4", duration: 36 },
+            "مفوض 4": { nextRank: "مفوض 3", duration: 36 },
+            "مفوض 3": { nextRank: "مفوض 2", duration: 36 },
+            "مفوض 2": { nextRank: "مفوض 1", duration: 36 },
+            "مفوض 1": { nextRank: "ملازم", duration: 48 },
+            "ملازم": { nextRank: "ملازم أول", duration: 36 },
+            "ملازم أول": { nextRank: "نقيب", duration: 48 },
+            "نقيب": { nextRank: "رائد", duration: 48 },
+            "رائد": { nextRank: "مقدم", duration: 48 },
+            "مقدم": { nextRank: "عقيد", duration: 48 },
+            "عقيد": { nextRank: "عميد", duration: 48 },
+            "عميد": { nextRank: "لواء", duration: 60 },
+            "لواء": { nextRank: "فريق", duration: 60 },
+            "فريق": { nextRank: "لا يوجد", duration: 0 }
+        };
+
+        function calculatePromotion() {
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            const currentRank = document.getElementById('currentRank').value;
+            const lastPromotion = document.getElementById('lastPromotion').value;
+            const seniority = parseInt(document.getElementById('seniority').value) || 0;
+            const newSeniority = parseInt(document.getElementById('newSeniority').value) || 0;
+            
+            // التحقق من البيانات المدخلة
+            if (!appointmentDate || !lastPromotion) {
+                alert('الرجاء إدخال جميع البيانات المطلوبة');
+                return;
+            }
+            
+            const totalSeniority = seniority + newSeniority;
+            const promotionInfo = promotionData[currentRank];
+            
+            if (!promotionInfo || promotionInfo.nextRank === "لا يوجد") {
+                alert('لا يوجد ترقية تالية للرتبة الحالية');
+                return;
+            }
+            
+            // حساب تاريخ الاستحقاق
+            const lastPromotionDate = new Date(lastPromotion);
+            const monthsRequired = promotionInfo.duration - (totalSeniority / 30);
+            
+            const promotionDate = new Date(lastPromotionDate);
+            promotionDate.setMonth(promotionDate.getMonth() + monthsRequired);
+            
+            // تحديد جدول الترقية (كانون الثاني أو تموز)
+            let promotionSchedule;
+            const month = promotionDate.getMonth() + 1; // JavaScript months are 0-11
+            
+            if (month >= 5 && month <= 10) {
+                promotionSchedule = "تموز (يوليو)";
+            } else {
+                promotionSchedule = "كانون الثاني (يناير)";
+            }
+            
+            // عرض النتائج
+            document.getElementById('currentRankResult').textContent = currentRank;
+            document.getElementById('nextRankResult').textContent = promotionInfo.nextRank;
+            document.getElementById('promotionDateResult').textContent = formatDate(promotionDate);
+            document.getElementById('promotionScheduleResult').textContent = promotionSchedule;
+            
+            document.getElementById('results').style.display = 'block';
+        }
+        
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('ar-EG', options);
+        }
+    </script>
+</body>
+</html>

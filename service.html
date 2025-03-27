@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب مدة الخدمة - تصميم 313</title>
+    <style>
+        :root {
+            --primary-1: #6C5CE7;
+            --primary-2: #A569BD;
+            --secondary-1: #00B894;
+            --secondary-2: #2ecc71;
+            --accent-1: #FD79A8;
+            --accent-2: #E84393;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            
+            --gradient-bg: linear-gradient(135deg, var(--primary-1), var(--primary-2), var(--secondary-1), var(--accent-1), var(--primary-1));
+            --gradient-header: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            --gradient-footer: linear-gradient(135deg, var(--dark), #34495e);
+            
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-inset: inset 0 2px 5px rgba(0,0,0,0.1);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--gradient-bg);
+            background-size: 400% 400%;
+            animation: gradient-wave 15s ease infinite;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradient-wave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* تصميم كروت 313 */
+        .card-313 {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .card-313:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-313::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-1), var(--secondary-1));
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .card-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: white;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .card-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-1);
+            border-radius: 4px;
+        }
+
+        /* عناصر النموذج */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: var(--radius-md);
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 3px rgba(253, 121, 168, 0.2);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+        
+        /* زر الحساب */
+        .btn-313 {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-313:hover {
+            background: linear-gradient(135deg, var(--primary-2), var(--primary-1));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-313:active {
+            transform: translateY(0);
+        }
+
+        /* نتائج الحساب */
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .result-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border-left: 4px solid;
+            transition: var(--transition);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .result-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .result-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .team-service { border-left-color: var(--primary-1); }
+        .team-service-with-days { border-left-color: var(--primary-2); }
+        .unit-service { border-left-color: var(--secondary-1); }
+        .unit-service-with-days { border-left-color: var(--secondary-2); }
+        
+        /* تأثيرات الظهور */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .result-card:nth-child(1) { animation-delay: 0.1s; }
+        .result-card:nth-child(2) { animation-delay: 0.2s; }
+        .result-card:nth-child(3) { animation-delay: 0.3s; }
+        .result-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* تعديلات للتقويم */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        /* تصميم للهواتف */
+        @media (max-width: 768px) {
+            .card-313 {
+                padding: 20px;
+            }
+            
+            .card-header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card-313">
+            <div class="card-header">
+                <h1><i class="fas fa-calculator"></i> حساب مدة الخدمة</h1>
+            </div>
+            
+            <div class="form-group">
+                <label for="workedInTeam"><i class="fas fa-users"></i> هل عمل داخل الفرقة؟</label>
+                <select id="workedInTeam" class="form-control" onchange="toggleTeamDateField()">
+                    <option value="no">لا</option>
+                    <option value="yes">نعم</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="teamDateGroup" style="display: none;">
+                <label for="teamEntryDate"><i class="fas fa-calendar-alt"></i> تاريخ دخول الفرقة</label>
+                <input type="date" id="teamEntryDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="unitEntryDate"><i class="fas fa-building"></i> تاريخ الدخول إلى الوحدة الحالية</label>
+                <input type="date" id="unitEntryDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="additionalDays"><i class="fas fa-plus-circle"></i> عدد الأيام المضافة (اختياري)</label>
+                <input type="number" id="additionalDays" class="form-control" min="0" value="0">
+            </div>
+
+            <button class="btn-313" onclick="calculateService()">
+                <i class="fas fa-calculator"></i> حساب مدة الخدمة
+            </button>
+
+            <div class="results" id="results">
+                <div class="result-grid">
+                    <div class="result-card team-service">
+                        <div class="result-title">الخدمة داخل الفرقة</div>
+                        <div class="result-value" id="teamServiceResult">-</div>
+                    </div>
+                    
+                    <div class="result-card team-service-with-days">
+                        <div class="result-title">الخدمة داخل الفرقة مع الأيام المضافة</div>
+                        <div class="result-value" id="teamServiceWithDaysResult">-</div>
+                    </div>
+                    
+                    <div class="result-card unit-service">
+                        <div class="result-title">الخدمة داخل الوحدة الحالية</div>
+                        <div class="result-value" id="unitServiceResult">-</div>
+                    </div>
+                    
+                    <div class="result-card unit-service-with-days">
+                        <div class="result-title">الخدمة داخل الوحدة الحالية مع الأيام المضافة</div>
+                        <div class="result-value" id="unitServiceWithDaysResult">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTeamDateField() {
+            const teamGroup = document.getElementById("teamDateGroup");
+            teamGroup.style.display = document.getElementById("workedInTeam").value === "yes" ? "block" : "none";
+        }
+
+        function calculateService() {
+            const workedInTeam = document.getElementById("workedInTeam").value;
+            const teamEntryDate = document.getElementById("teamEntryDate").value;
+            const unitEntryDate = document.getElementById("unitEntryDate").value;
+            const additionalDays = parseInt(document.getElementById("additionalDays").value) || 0;
+            const today = new Date();
+
+            if (!unitEntryDate) {
+                alert("يرجى إدخال تاريخ الدخول إلى الوحدة الحالية!");
+                return;
+            }
+
+            const unitDate = new Date(unitEntryDate);
+            let teamDate = null;
+            if (workedInTeam === "yes") {
+                if (!teamEntryDate) {
+                    alert("يرجى إدخال تاريخ دخول الفرقة!");
+                    return;
+                }
+                teamDate = new Date(teamEntryDate);
+            }
+
+            function calculateDaysBetween(startDate, endDate) {
+                return Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+            }
+
+            function formatService(days) {
+                const years = Math.floor(days / 365);
+                const months = Math.floor((days % 365) / 30);
+                const remainingDays = (days % 365) % 30;
+                return `${years} سنة و ${months} شهر و ${remainingDays} يوم`;
+            }
+
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.style.display = "none";
+            setTimeout(() => {
+                resultsDiv.classList.add("show");
+                resultsDiv.style.display = "block";
+            }, 10);
+
+            if (teamDate) {
+                const teamServiceDays = calculateDaysBetween(teamDate, today);
+                document.getElementById("teamServiceResult").textContent = formatService(teamServiceDays);
+
+                const teamServiceWithDays = teamServiceDays + additionalDays;
+                document.getElementById("teamServiceWithDaysResult").textContent = formatService(teamServiceWithDays);
+            } else {
+                document.getElementById("teamServiceResult").textContent = "غير متاح";
+                document.getElementById("teamServiceWithDaysResult").textContent = "غير متاح";
+            }
+
+            const unitServiceDays = calculateDaysBetween(unitDate, today);
+            document.getElementById("unitServiceResult").textContent = formatService(unitServiceDays);
+
+            const unitServiceWithDays = unitServiceDays + additionalDays;
+            document.getElementById("unitServiceWithDaysResult").textContent = formatService(unitServiceWithDays);
+        }
+    </script>
+
+</body>
+</html>

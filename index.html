@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الواجهة الرئيسية</title>
+    <style>
+        /* متغيرات تصميم ٣١٣ */
+        :root {
+            --primary-1: #6C5CE7;
+            --primary-2: #A569BD;
+            --secondary-1: #00B894;
+            --secondary-2: #2ecc71;
+            --accent-1: #FD79A8;
+            --accent-2: #E84393;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            
+            --gradient-bg: linear-gradient(135deg, var(--primary-1), var(--primary-2), var(--secondary-1), var(--accent-1), var(--primary-1));
+            --gradient-header: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+            --gradient-footer: linear-gradient(135deg, var(--dark), #34495e);
+            
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-inset: inset 0 2px 5px rgba(0,0,0,0.1);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition: all 0.3s ease;
+        }
+
+        /* إعدادات عامة */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--gradient-bg);
+            background-size: 400% 400%;
+            animation: gradient-wave 15s ease infinite;
+            color: white;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradient-wave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* الترويسة */
+        .header {
+            background: var(--gradient-header);
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-1), var(--secondary-1), var(--accent-2));
+            animation: border-glow 3s ease infinite;
+        }
+        
+        @keyframes border-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-1);
+            border-radius: 4px;
+        }
+
+        /* كروت تصميم ٣١٣ */
+        .card-313 {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-313:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-313::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-1), var(--secondary-1));
+        }
+        
+        .card-header {
+            padding: 25px 30px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            margin: 0 0 15px;
+            color: white;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-1), transparent);
+            border-radius: 3px;
+        }
+
+        /* أزرار تصميم ٣١٣ */
+        .btn-313 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1.1rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+            min-width: 200px;
+        }
+        
+        .btn-313 i {
+            margin-left: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+        
+        .disabled-btn {
+            background: linear-gradient(135deg, #b2bec3, #636e72);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .disabled-btn:hover {
+            transform: none !important;
+            box-shadow: var(--shadow-sm) !important;
+        }
+
+        /* شبكة الأزرار */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .button-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .button-card .btn-313 {
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .button-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-1);
+        }
+
+        /* التذييل */
+        .footer {
+            margin-top: 80px;
+            padding: 50px 0;
+            background: var(--gradient-footer);
+            color: white;
+            font-size: 16px;
+            line-height: 1.8;
+            position: relative;
+            text-align: center;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-1), var(--secondary-1));
+        }
+        
+        .footer .container {
+            max-width: 800px;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+        }
+        
+        .footer p:first-of-type {
+            margin-top: 0;
+        }
+        
+        .footer p:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-1);
+        }
+
+        /* التكيف مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 0 30px;
+            }
+            
+            .header h2 {
+                font-size: 2rem;
+            }
+            
+            .buttons-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card-313 {
+                border-radius: var(--radius-lg);
+            }
+            
+            .card-header {
+                padding: 20px;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .btn-313 {
+                padding: 15px 20px;
+                min-width: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h2>الواجهة الرئيسية</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card-313">
+            <div class="card-header">
+                <h1 class="card-title">الخدمات الإلكترونية</h1>
+            </div>
+            <div class="card-body">
+                <div class="buttons-grid">
+                    <div class="button-card">
+                        <div class="button-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <button class="btn-313 btn-primary" onclick="window.location.href='service.html'">
+                            <i class="fas fa-arrow-left"></i> حساب الخدمة
+                        </button>
+                    </div>
+                    
+                    <div class="button-card">
+                        <div class="button-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <button class="btn-313 btn-primary" onclick="window.location.href='add.html'">
+                            <i class="fas fa-arrow-left"></i> حساب الترقيات
+                        </button>
+                    </div>
+                    
+                    <div class="button-card">
+                        <div class="button-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <button class="btn-313 btn-primary" onclick="window.location.href='salory.html'">
+                            <i class="fas fa-arrow-left"></i> حساب الراتب التقديري
+                        </button>
+                    </div>
+                    
+                    <div class="button-card">
+                        <div class="button-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn-313 btn-primary" onclick="window.location.href='info.html'">
+                            <i class="fas fa-arrow-left"></i> الاستعلامات
+                        </button>
+                    </div>
+                    
+                    <div class="button-card">
+                        <div class="button-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <button class="btn-313 disabled-btn">
+                            <i class="fas fa-lock"></i> الإحصائيات
+                        </button>
+                    </div>
+                    
+                    <div class="button-card">
+                        <div class="button-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <button class="btn-313 disabled-btn">
+                            <i class="fas fa-lock"></i> الإعدادات
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-logo">المصمم</div>
+            <p>زياد الأنباري</p>
+            <p style="margin-top: 25px;">أهدي ثواب هذا العمل إلى:</p>
+            <p> المؤمنين والمؤمنات و شهداء القوات الأمنية والحشد الشعبي</p>
+            <p>و بالخصوص والدتي وأخي</p>
+            <p style="margin-top: 25px;">بالصلاة على محمد وآل محمد الطيبين</p>
+        </div>
+    </div>
+</body>
+</html>
